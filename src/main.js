@@ -6,9 +6,12 @@ import Util from './libs/util';
 import App from './app.vue';
 import 'view-design/dist/styles/iview.css';
 import './styles/common.css'
-
+import axios from 'axios'
+import config from './config/config'
 Vue.use(VueRouter);
 Vue.use(ViewUI);
+Vue.prototype.$http = axios;
+Vue.prototype.$config = config;
 
 // 路由配置
 const RouterConfig = {
