@@ -29,6 +29,15 @@
             <FormItem label="酒品标题">
                 <Input type="text" v-model="addWine.title" placeholder=""></Input>
             </FormItem>
+            <FormItem label="酒品头图">
+                <!-- <Upload :action="$config.host + '/img/upload'" v-model="addWine.pics">
+                    <Button icon="ios-cloud-upload-outline">上传</Button>
+                </Upload> -->
+                <upload-pics :url="$config.host + '/img/upload'" :limit="1" :add="addTitlePicHandler" :remove="removeTitlePicHandler"></upload-pics>
+            </FormItem>
+            <FormItem label="酒品详情">
+                <upload-pics :url="$config.host + '/img/upload'" :limit="5" :add="addPicsHandler" :remove="removePicsHandler"></upload-pics>
+            </FormItem>
             <FormItem label="原价">
                 <Input type="text" v-model="addWine.origin_price" placeholder="单位：元"></Input>
             </FormItem>
@@ -62,16 +71,18 @@
 </template>
 <script>
 import Layout from '../layout/layout.vue'
+import uploadPics from  './components/uploadPics.vue'
 export default {
   name: 'wine-list',
-  components: {Layout},
+  components: {Layout,uploadPics},
     data () {
         return {
+            // uploadPic: $config.host + '/img/upload',
             addModal: {
                 show: false,
                 type: ''
             },
-            addWine: {},
+            addWine: {detail_pics: [], pics: []},
             confirm: {
                 show: false,
                 content: '',
@@ -206,6 +217,18 @@ export default {
         },
         cancel () {
             this.$Message.info('取消操作');
+        },
+        addPicsHandler (pic) {
+            this.addWine.detail_pics.push(pic)
+        },
+        removePicsHandler (pic) {
+            this.addWine.detail_pics.splice(this.addWine.detail_pics.indexOf(pic), 1)
+        },
+        addTitlePicHandler (pic) {
+            this.addWine.pics.push(pic)
+        },
+        removeTitlePicHandler (pic) {
+            this.addWine.pics.splice(this.addWine.pics.indexOf(pic), 1)
         }
     }
 }
