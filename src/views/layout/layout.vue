@@ -56,7 +56,7 @@
                 <Breadcrumb :style="{margin: '16px 12px'}">
                     <BreadcrumbItem :key="i" v-for="(item,i) in $route.matched">{{item.meta.title}}</BreadcrumbItem>
                 </Breadcrumb>
-                <Content :style="{minHeight: '280px', background: '#fff'}">
+                <Content :style="{minHeight: '280px', background: '#fff', overflow:'auto'}">
                     <Layout>
                         <!-- <Sider hide-trigger :style="{background: '#fff'}">
                             <Menu active-name="1-2" theme="light" width="auto" :open-names="['1']">
