@@ -67,6 +67,7 @@
         @on-cancel="cancel">
         <p>{{confirm.content}}</p>
     </Modal>
+    <footer><a href="http://beian.miit.gov.cn/">京ICP备2021007390号</a></footer>
   </layout>
 </template>
 <script>
