@@ -207,7 +207,7 @@ export default {
             });
         },
         ok () {
-            this.$http.post(`http://127.0.0.1:3000/wine/delete/${this.confirm.item.id}`).then(response => {
+            this.$http.post(`${this.$config.host}/wine/delete/${this.confirm.item.id}`).then(response => {
                 this.winelist.splice(this.confirm.index, 1);
                 this.$Message.info('删除成功');
         
