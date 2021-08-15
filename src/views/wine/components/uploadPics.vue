@@ -2,7 +2,7 @@
 <div>
     <div class="demo-upload-list" :key="item.id" v-for="item in uploadList">
         <template v-if="item.status === 'finished'">
-            <img :src="item.url">
+            <img :src="item.url" crossorigin="anonymous">
             <div class="demo-upload-list-cover">
                 <Icon type="ios-eye-outline" @click.native="handleView(item.url)"></Icon>
                 <Icon type="ios-trash-outline" @click.native="handleRemove(item)"></Icon>
@@ -60,6 +60,7 @@
                 // this.uploadList.push(file)
             },
             handleSuccess (res, file) {
+                debugger
                 file.url = res.data || ''
                 this.uploadList.push(file)
                 this.add(file.url)
