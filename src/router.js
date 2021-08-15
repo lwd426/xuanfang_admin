@@ -21,21 +21,6 @@ const routers = [
                     title: '列表页'
                 },
                 component: (resolve) => require(['./views/wine/list.vue'], resolve)
-            },
-            {
-                path: 'add',
-                name: 'addwine',
-                meta: {
-                    title: '添加酒品'
-                },
-                component: (resolve) => require(['./views/wine/add.vue'], resolve)
-            },
-            {
-                path: 'edit',
-                meta: {
-                    title: '编辑酒品'
-                },
-                component: (resolve) => require(['./views/wine/edit.vue'], resolve)
             }
         ]
     }, 
@@ -86,20 +71,6 @@ const routers = [
                     title: '列表页'
                 },
                 component: (resolve) => require(['./views/consumers/list.vue'], resolve)
-            },
-            {
-                path: 'addConsumers',
-                meta: {
-                    title: '添加用户'
-                },
-                component: (resolve) => require(['./views/consumers/add.vue'], resolve)
-            },
-            {
-                path: 'editConsumers',
-                meta: {
-                    title: '编辑用户'
-                },
-                component: (resolve) => require(['./views/consumers/edit.vue'], resolve)
             }
         ]
     },
