@@ -94,7 +94,7 @@
                     </Layout>
                 </Content>
             </Layout>
-            <Footer class="layout-footer-center">2011-2016 &copy; TalkingData</Footer>
+            <Footer class="layout-footer-center"><a href="http://beian.miit.gov.cn/">京ICP备2021007390号</a></Footer>
         </Layout>
     </div>
 </div>
