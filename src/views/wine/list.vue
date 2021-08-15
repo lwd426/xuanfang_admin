@@ -12,7 +12,7 @@
         </template>
         <template slot-scope="{ row, index }" slot="action">
             <Button type="primary" size="small" style="margin-right: 5px" @click="edit(row)">编辑</Button>
-            <Button type="error" size="small" @click="remove(row,index)">编辑</Button>
+            <Button type="error" size="small" @click="remove(row,index)">删除</Button>
         </template>
     </Table>
     <!-- 添加酒品 -->
@@ -143,7 +143,7 @@ export default {
     },
     methods: {
         getList () {
-            this.$http.get(this.$config.host+ '/wine/list').then(response => {
+            this.$http.get(this.$config.host+ '/api/wine/list').then(response => {
             var res = response.data.data;
             this.winelist = res.map((wine) => {
                 return {
@@ -171,6 +171,7 @@ export default {
             }
         },
         remove (row,index) {
+            debugger
             if (!row || !row.id) return 
             this.confirm = {
                 content: '确认要删除'+row.name + '?',
@@ -187,7 +188,7 @@ export default {
         },
         add () {
             if(!this.addWine) return
-            let url = this.$config.host + '/wine/add'
+            let url = this.$config.host + '/api/wine/add'
             if (this.addModal.type === 'edit') {
                 url = `${this.$config.host}/wine/edit/${this.addWine.id}`
             }
@@ -207,7 +208,7 @@ export default {
             });
         },
         ok () {
-            this.$http.post(`${this.$config.host}/wine/delete/${this.confirm.item.id}`).then(response => {
+            this.$http.post(this.$config.host + `/api/wine/delete/${this.confirm.item.id}`).then(response => {
                 this.winelist.splice(this.confirm.index, 1);
                 this.$Message.info('删除成功');
         
